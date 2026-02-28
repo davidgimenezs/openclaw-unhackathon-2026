@@ -1,0 +1,159 @@
+/* ============================================================
+   Global Reset + Dark Theme + Animations
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Pulse animation for DOWN nodes */
+@keyframes pulse-down {
+  0%   { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+  50%  { box-shadow: 0 0 35px rgba(239, 68, 68, 0.9), 0 0 60px rgba(239, 68, 68, 0.3); }
+  100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+}
+
+/* Pulse animation for DEGRADED nodes */
+@keyframes pulse-degraded {
+  0%   { box-shadow: 0 0 16px rgba(245, 158, 11, 0.5); }
+  50%  { box-shadow: 0 0 28px rgba(245, 158, 11, 0.8), 0 0 45px rgba(245, 158, 11, 0.2); }
+  100% { box-shadow: 0 0 16px rgba(245, 158, 11, 0.5); }
+}
+
+/* Ripple ring effect */
+@keyframes ripple {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.infra-pulse-down {
+  animation: pulse-down 1.5s ease-in-out infinite;
+}
+
+.infra-pulse-degraded {
+  animation: pulse-degraded 2s ease-in-out infinite;
+}
+
+/* Shake animation for initial kill */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.infra-shake {
+  animation: shake 0.5s ease;
+}
+
+/* React Flow overrides */
+.react-flow__background {
+  background: #0f172a !important;
+}
+
+.react-flow__minimap {
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+}
+
+.react-flow__controls {
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  box-shadow: none;
+}
+
+.react-flow__controls button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.react-flow__controls button:hover {
+  background: #334155;
+}
+
+.react-flow__controls button svg {
+  fill: #94a3b8;
+}
+
+/* Range slider styling */
+input[type='range'] {
+  -webkit-appearance: none;
+  height: 6px;
+  background: #1e293b;
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  border: 2px solid #0f172a;
+}
+
+/* Button hover effects */
+button:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+button {
+  transition: all 0.15s ease;
+}
